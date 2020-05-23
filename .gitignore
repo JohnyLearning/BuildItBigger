@@ -15,7 +15,8 @@
 .idea/codeStyles/Project.xml
 app/app.iml
 backend/backend.iml
-backend/build/classes/java/main/com/udacity/gradle/builditbigger/backend/MyBean.class
-backend/build/classes/java/main/com/udacity/gradle/builditbigger/backend/MyEndpoint.class
-backend/build/distributions/backend-discoveryDocs.zip
-backend/build/endpointsDiscoveryDocs/myApi-v1-rest.discovery
+#backend/build/classes/java/main/com/udacity/gradle/builditbigger/backend/MyBean.class
+#backend/build/classes/java/main/com/udacity/gradle/builditbigger/backend/MyEndpoint.class
+#backend/build/distributions/backend-discoveryDocs.zip
+#backend/build/endpointsDiscoveryDocs/myApi-v1-rest.discovery
+/backend/build
