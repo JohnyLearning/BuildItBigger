@@ -23,7 +23,7 @@ public class MyEndpoint {
     @ApiMethod(name = "sayHi")
     public MyBean sayHi(@Named("name") String name) {
         MyBean response = new MyBean();
-        StringBuilder builder = new StringBuilder("Hi, ").append(name).append("<br/>").append(JokeTeller.tellJoke());
+        StringBuilder builder = new StringBuilder("Hi, ").append(name).append("\n\n").append(JokeTeller.tellJoke());
         response.setData(builder.toString());
         return response;
     }
