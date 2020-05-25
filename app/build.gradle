@@ -32,17 +32,16 @@ android {
         }
     }
 
-//    productFlavors {
-//        free {
-//            applicationId "com.udacity.gradle.builditbigger.free"
-//        }
-//        paid {
-//            applicationId "com.udacity.gradle.builditbigger.paid"
-//        }
-//    }
-
-    configurations.all {
-        resolutionStrategy.force 'com.google.code.findbugs:jsr305:2.0.1'
+    flavorDimensions "version"
+    productFlavors{
+        free {
+            dimension "version"
+            applicationId "com.udacity.gradle.builditbigger.free"
+        }
+        paid {
+            dimension "version"
+            applicationId "com.udacity.gradle.builditbigger.paid"
+        }
     }
 
     packagingOptions {
