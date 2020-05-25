@@ -8,20 +8,26 @@ import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.ihadzhi.jokerdisplayandroidlib.JokeDisplayActivity;
 import com.ihadzhi.jokerlib.JokeTeller;
 
+import static android.view.View.GONE;
 import static com.ihadzhi.jokerdisplayandroidlib.JokeDisplayActivity.JOKE_PARAM;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        progressBar = findViewById(R.id.progress_bar);
+        progressBar.setVisibility(GONE);
     }
 
 
@@ -48,11 +54,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
+        progressBar.setVisibility(View.VISIBLE);
         new EndpointsAsyncTask(new EndpointsAsyncTask.Callback() {
             @Override
             public void execute(String joke) {
                 Intent jokeIntent = new Intent(MainActivity.this, JokeDisplayActivity.class);
                 jokeIntent.putExtra(JOKE_PARAM, joke);
+                progressBar.setVisibility(GONE);
                 startActivity(jokeIntent);
             }
         }).execute(new Pair<Context, String>(this, "Nobody"));
