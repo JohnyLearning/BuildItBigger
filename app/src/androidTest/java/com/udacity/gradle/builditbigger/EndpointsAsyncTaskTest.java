@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 
 import java.util.concurrent.CountDownLatch;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(AndroidJUnit4.class)
@@ -26,6 +27,7 @@ public class EndpointsAsyncTaskTest {
             @Override
             public void execute(String joke) {
                 assertNotNull(joke);
+                assertFalse(joke.startsWith("Failed"));
                 signal.countDown();
             }
         }).execute(new Pair<Context, String>(activityTestRule.getActivity(), "Nobody"));

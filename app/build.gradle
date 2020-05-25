@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.cloud.tools.endpoints-framework-client'
 
+tasks.register("runTestsOnServer") {
+    dependsOn ':backend:appengineStart'
+    dependsOn 'connectedAndroidTest'
+    dependsOn ':backend:appengineStop'
+    tasks.findByName('connectedAndroidTest').mustRunAfter(':backend:appengineStart')
+    tasks.findByName('connectedAndroidTest').finalizedBy(':backend:appengineStop')
+}
+
 buildscript {
     repositories {
         jcenter()
